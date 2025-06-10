@@ -1,0 +1,46 @@
+/* Imágenes de libros */
+img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.col-md-4 img {
+    width: 100%;
+    height: auto; /*Altura ajustada*/
+    max-height: 300px; /* Limita la altura máxima*/
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse ni deformarse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.col-md-4 img:hover {
+    transform: scale(1.05);
+}
+
+/* Tablas */
+.table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+/* Alertas */
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    z-index: 1050;
+}

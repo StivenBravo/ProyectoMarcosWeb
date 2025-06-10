@@ -1,0 +1,49 @@
+/* Reset y estructura base */
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Lora', serif;
+    background-color: #ffffff;
+}
+
+main {
+    flex: 1;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Banner de imagen */
+.image-banner {
+    background-image: url("https://artyplan.com/wp-content/uploads/2023/03/papel-para-imprimir-libros.png.webp");
+    background-repeat: no-repeat;
+    background-size: 100% auto; /* Ancho completo sin recorte vertical */
+    background-position: center;
+    background-color: #fff;
+    height: 250px;
+    width: 100%;
+    position: relative;
+}
+
+.banner-text {
+    color: #000;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+
+
+}
