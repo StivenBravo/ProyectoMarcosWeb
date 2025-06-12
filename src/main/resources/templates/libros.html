@@ -30,26 +30,42 @@
             <div class="text-danger" th:errors="*{anio}"></div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <div class="mb-3">
+            <label for="categoria" class="form-label">Categoría</label>
+            <select id="categoria" class="form-select" th:field="*{categoria.id}" required>
+                <option value="">-- Seleccione una categoría --</option>
+                <option th:each="cat : ${categorias}"
+                        th:value="${cat.id}"
+                        th:text="${cat.nombre}">
+                </option>
+            </select>
+            <div class="text-danger" th:errors="*{categoria}"></div>
+        </div>
 
+        <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-        <a th:href="@{/}" class="btn btn-outline-primary mb-3">Volver al inicio</a>
+
+    <a th:href="@{/}" class="btn btn-outline-primary mb-3">Volver al inicio</a>
 
     <h4 class="mb-3">Libros Registrados</h4>
     <table class="table table-bordered">
         <thead class="table-dark">
         <tr>
+            <th>#</th>
             <th>Título</th>
             <th>Autor</th>
             <th>Año</th>
+            <th>Categoría</th>
             <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="l : ${libros}">
+        <tr th:each="l, i : ${libros}">
+            <td th:text="${i.index + 1}">1</td>
             <td th:text="${l.titulo}">Título</td>
             <td th:text="${l.autor}">Autor</td>
-            <td th:text="${l.anio}">2024</td>
+            <td th:text="${l.anio}">Año</td>
+            <td th:text="${l.categoria != null ? l.categoria.nombre : 'Sin categoría'}">Categoría</td>
             <td>
                 <a th:href="@{'/libros/editar/' + ${l.id}}" class="btn btn-warning btn-sm">Editar</a>
                 <a th:href="@{'/libros/eliminar/' + ${l.id}}" class="btn btn-danger btn-sm"

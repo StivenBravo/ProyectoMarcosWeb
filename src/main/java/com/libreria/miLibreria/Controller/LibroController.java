@@ -1,6 +1,7 @@
 package com.libreria.miLibreria.Controller;
 
 import com.libreria.miLibreria.Entitys.Libro;
+import com.libreria.miLibreria.Repositories.CategoriaRepository;
 import com.libreria.miLibreria.Repositories.LibroRepository;
 
 import jakarta.validation.Valid;
@@ -17,10 +18,14 @@ public class LibroController {
     @Autowired
     private LibroRepository libroRepo;
 
+    @Autowired
+    private CategoriaRepository categoriaRepository;
+
     @GetMapping
     public String listarLibros(Model model) {
         model.addAttribute("libros", libroRepo.findAll());
         model.addAttribute("libro", new Libro());
+        model.addAttribute("categorias",categoriaRepository.findAll());
         return "libros";
     }
 
@@ -29,7 +34,8 @@ public class LibroController {
                                BindingResult result,
                                Model model) {
         if (result.hasErrors()) {
-            model.addAttribute("libros", libroRepo.findAll());
+            model.addAttribute("libro", libroRepo.findAll());
+            model.addAttribute("categorias", categoriaRepository.findAll());
             return "libros";
         }
         libroRepo.save(libro);
@@ -41,6 +47,7 @@ public class LibroController {
         Libro libro = libroRepo.findById(id).orElseThrow();
         model.addAttribute("libro", libro);
         model.addAttribute("libros", libroRepo.findAll());
+        model.addAttribute("categorias", categoriaRepository.findAll());
         return "libros";
     }
 

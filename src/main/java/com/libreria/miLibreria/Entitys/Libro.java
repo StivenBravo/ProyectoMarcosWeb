@@ -9,6 +9,10 @@ import lombok.Setter;
 @Getter
 @Entity
 public class Libro {
+    @ManyToOne
+    @JoinColumn(name="categoria_id")
+    @NotNull(message = "Selecciones una categoria valida")
+    private Categoria categoria;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +26,7 @@ public class Libro {
 
     @Min(value = 1800, message = "El año debe ser mayor que 1800")
     private int anio;
+
 
 }
 
